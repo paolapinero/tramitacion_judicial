@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>
-		<?php echo 'Factoring' ?>:
+		<?php echo 'Tramitacion Judicial' ?>:
 	</title>
     <link rel="stylesheet" href="<?php echo base_url("/assets/bootstrap/css/bootstrap.css"); ?>" />
    
@@ -15,7 +15,7 @@
               <div class="container-fluid">
                 <div class="navbar-header">
                     <img style="float: left; margin-right: 5px;" src="<?php echo base_url("/img/inicio.png") ?>">
-                    <a class="navbar-brand" href="<?php echo base_url() ?>">Egresos Judiciales</a>
+                    <a class="navbar-brand" href="<?php echo base_url() ?>">Tramitacion Judicial</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                 
