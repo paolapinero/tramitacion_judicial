@@ -18,7 +18,7 @@ class Usuarios extends CI_Controller {
 
 	public function index()
 	{	
-    print_r($user_data = $this->session->userdata('usuario'));
+    //print_r($user_data = $this->session->userdata('usuario'));
 		$usuarios = $this->Usuario->getUsuarios();
 		$data['usuarios'] = $usuarios;
 		$this->load->view('Usuarios/index',$data);
@@ -66,6 +66,7 @@ class Usuarios extends CI_Controller {
           {
                //validation fails
                $this->load->view('Usuarios/login');
+            echo 'hoola no';
           }
           else
           {
@@ -86,14 +87,23 @@ class Usuarios extends CI_Controller {
                     }
                     else
                     {
+                      echo 'hoola1';
                          $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Invalid username and password!</div>');
+
                          redirect('usuarios/login');
+
+                        $this->load->view('Usuarios/login');
+
                     }
                }
                else
                {
+
                 echo 'hoola';
                   //  redirect('usuarios/login');
+
+                   $this->load->view('Usuarios/login');
+
                }
           }
      }
