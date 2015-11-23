@@ -12,8 +12,8 @@ class Usuarios extends CI_Controller {
 		$this->load->library('parser');
 	}
 
-	public function index(parser)()
-	{
-		$this->load->view('index');
+	public function index()
+	{	
+		$this->load->view('Usuarios/index');
 	}
 }
