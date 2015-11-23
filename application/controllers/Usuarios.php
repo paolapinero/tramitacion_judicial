@@ -10,6 +10,7 @@ class Usuarios extends CI_Controller {
         $this->load->library('email');
         $this->load->library('form_validation');
         $this->load->library('javascript');
+    $this->load->library('session');
 		$this->load->library('parser');
 		$this->load->model('Usuario');
 		
@@ -17,6 +18,7 @@ class Usuarios extends CI_Controller {
 
 	public function index()
 	{	
+    print_r($user_data = $this->session->userdata('usuario'));
 		$usuarios = $this->Usuario->getUsuarios();
 		$data['usuarios'] = $usuarios;
 		$this->load->view('Usuarios/index',$data);
@@ -57,8 +59,8 @@ class Usuarios extends CI_Controller {
           $password = $this->input->post("password");
 
           //set validations
-          $this->form_validation->set_rules("usuario", "usuario", "trim|required");
-          $this->form_validation->set_rules("password", "password", "trim|required");
+          $this->form_validation->set_rules("usuario", "usuario", "required");
+          $this->form_validation->set_rules("password", "password", "required");
 
           if ($this->form_validation->run() == FALSE)
           {
@@ -68,10 +70,10 @@ class Usuarios extends CI_Controller {
           else
           {
                //validation succeeds
-               if ($this->input->post('login') == "Login")
+               if (!empty($this->input->post('usuario')))
                {
                     //check if username and password is correct
-                    $usr_result = $this->login_model->get_user($username, $password);
+                    $usr_result = $this->Usuario->login($username, $password);
                     if ($usr_result > 0) //active user record is present
                     {
                          //set the session variables
@@ -80,18 +82,21 @@ class Usuarios extends CI_Controller {
                               'loginuser' => TRUE
                          );
                          $this->session->set_userdata($sessiondata);
-                         redirect("index");
+                         redirect("usuarios/index");
                     }
                     else
                     {
                          $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Invalid username and password!</div>');
-                        // redirect('usuarios/login');
+                         redirect('usuarios/login');
                     }
                }
                else
                {
-                   // redirect('usuarios/login');
+                echo 'hoola';
+                  //  redirect('usuarios/login');
                }
           }
      }
+
+     function logout(){}
 }
