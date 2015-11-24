@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Usuarios extends CI_Controller {
 
 	public function __construct(){	
@@ -69,13 +68,16 @@ class Usuarios extends CI_Controller {
           }
           else
           {
+
                //validation succeeds
                if (!empty($this->input->post('usuario')))
                {
+
                     //check if username and password is correct
                     $usr_result = $this->Usuario->login($username, $password);
                     if ($usr_result > 0) //active user record is present
                     {
+
                          //set the session variables
                          $sessiondata = array(
                               'usuario' => $username,
@@ -92,8 +94,7 @@ class Usuarios extends CI_Controller {
                }
                else
                {
-                echo 'hoola';
-                  //  redirect('usuarios/login');
+                   redirect('usuarios/login');
                }
           }
      }
