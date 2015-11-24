@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Usuarios extends CI_Controller {
 
 	public function __construct(){	
@@ -68,6 +67,7 @@ class Usuarios extends CI_Controller {
                if (!empty($this->input->post('usuario'))){
                     $usr_result = $this->Usuario->login($username, $password);
                     if ($usr_result > 0){
+         
                          $sessiondata = array(
                               'usuario' => $username,
                               'loginuser' => TRUE
@@ -77,14 +77,17 @@ class Usuarios extends CI_Controller {
                     }
                     else
                     {
+
                       $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Invalid username and password!</div>');
                       redirect('usuarios/login');
                       $this->load->view('Usuarios/login');
+
                     }
                 }
                else
                {
                   $this->load->view('Usuarios/login');
+
                }
           }
   }
