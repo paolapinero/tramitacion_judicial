@@ -9,7 +9,7 @@
   </head>
 
   <body>
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+    <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <div class="container">
     <div class="row">
         <?php if (validation_errors()) : ?>
@@ -35,8 +35,7 @@
         <br />
         <br />
 
-        
-     <?= form_open() ?>
+    <?= form_open() ?>
         <label for="usuario" class="sr-only">Nombre de Usuario : </label>
             <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Nombre de Usuario" required autofocus />
             
@@ -50,8 +49,8 @@
     </div> <!-- /container -->
     </div> <!-- /container -->
     
-    <script src="webroot/js/jquery.js"></script>
-    <script src="webroot/js/bootstrap.min.js"></script>
-    <script src="webroot/js/bootstrap.js"></script>
+    <!--<script src="webroot/js/jquery.js"></script>-->
+    <!--<script src="webroot/js/bootstrap.min.js"></script>-->
+   <!-- <script src="webroot/js/bootstrap.js"></script>-->
   </body>
 </html>

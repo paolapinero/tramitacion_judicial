@@ -54,58 +54,49 @@ class Usuarios extends CI_Controller {
 		redirect('/usuarios/index', 'refresh');
 	}
 
-   function login()
-     {
-          //get the posted values
+  function login(){
           $username = $this->input->post("usuario");
           $password = $this->input->post("password");
 
-          //set validations
           $this->form_validation->set_rules("usuario", "usuario", "required");
           $this->form_validation->set_rules("password", "password", "required");
 
           if ($this->form_validation->run() == FALSE)
           {
-               //validation fails
                $this->load->view('Usuarios/login');
-           
           }
           else
           {
-
-               //validation succeeds
-               if (!empty($this->input->post('usuario')))
-               {
-
-                    //check if username and password is correct
+               if (!empty($this->input->post('usuario'))){
                     $usr_result = $this->Usuario->login($username, $password);
-                    if ($usr_result > 0) //active user record is present
-                    {
-
-                         //set the session variables
+                    if ($usr_result > 0){
+         
                          $sessiondata = array(
                               'usuario' => $username,
                               'loginuser' => TRUE
-                         );
+                          );
                          $this->session->set_userdata($sessiondata);
                          redirect("usuarios/index");
                     }
                     else
                     {
-                         $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Invalid username and password!</div>');
 
-                         redirect('usuarios/login');
-
-                        $this->load->view('Usuarios/login');
+                      $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Invalid username and password!</div>');
+                      redirect('usuarios/login');
+                      $this->load->view('Usuarios/login');
 
                     }
-               }
+                }
                else
                {
-                   $this->load->view('Usuarios/login');
+                  $this->load->view('Usuarios/login');
+
                }
           }
-     }
+  }
 
-     function logout(){}
+  function logout(){
+      $this->session->sess_destroy();
+      $this->index();
+     }
 }
