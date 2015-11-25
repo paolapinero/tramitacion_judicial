@@ -11,7 +11,8 @@ class Usuarios extends CI_Controller {
         $this->load->library('javascript');
     $this->load->library('session');
 		$this->load->library('parser');
-		$this->load->model('Usuario');
+    $this->load->model('Usuario');
+		$this->load->model('Rango');
 		
 	}
 
@@ -19,7 +20,9 @@ class Usuarios extends CI_Controller {
 	{	
     //print_r($user_data = $this->session->userdata('usuario'));
 		$usuarios = $this->Usuario->getUsuarios();
+    $rangos = $this->Rango->getRangos();
 		$data['usuarios'] = $usuarios;
+    $data['rangos'] = $rangos;
 		$this->load->view('Usuarios/index',$data);
 	}
 

@@ -26,12 +26,61 @@ class Fichas extends CI_Controller {
 
 	}
 
+  function index(){
+    //$this->init();
+    $fichas = $this->Ficha->getFichas();
+    $data['fichas'] = $fichas;
+    $this->load->view('Fichas/index',$data);
+    //var_dump($fichas[0]);
+  }
+
   function seleccionar_demandante_importar() {
       $demandantes = $this->Demandante->buscar_select();
       $this->load->view();
   }
 	
-	function importar_fichas(){
+  function campos_excel(){
+    $campos_disponibles = array(
+        'demandando_id' => 'RUT DEMANDADO',
+        'tribunal_id' => 'TRIBUNAL',
+        'rol' => 'ROL',
+        'abogado_id' => 'ABOGADO INTERNO',
+        'fecha_ingreso_distribucion' => 'FECHA DE INGRESO A DISTRIBUCIÓN',
+        'fecha_ingreso_tribunal' => 'FECHA DE INGRESO A TRIBUNAL',
+        'procurador_id' => 'PROCURADOR',
+        'numero_operacion' => 'NUM DE OPERACIÓN',
+        'tipo_documento_id' => 'TIPO DE DOCUMENTO',
+        'garantia_id' => 'GARANTIA',
+        'deuda' => 'DEUDA',
+        'detalle_deuda' => 'DETALLE DEUDA',
+        'sucursal_id' => 'SUCURSAL',
+        'numero_ficha_externo' =>  'NÚMERO DE FICHA DEL CLIENTE',
+        'fecha_entrega_abogado' => 'FECHA DE ENTREGA A ABOGADO'
+      );
+      $data['campos_disponibles'] = $campos_disponibles;
+      $demandantes = $this->Demandante->buscar_select();
+      $data['demandantes'] = $demandantes;
+      $this->load->view('Fichas/campos_excel',$data);
+  }
+
+  function importar_fichas(){
+    ini_set("memory_limit","300000000000M");
+        //$this->init();
+    $this->load->library('excel');
+    $seleccionados = $this->input->post('seleccionados');
+    $process = $this->input->post('process');
+    $demandantes = $this->Demandante->buscar_select();
+        $data['demandantes'] = $demandantes;
+    if (!empty($seleccionados)) { //Si viene con campos seleccionados
+        $data['seleccionados'] = $seleccionados;
+
+    } elseif ($process) { //Si ya cargo el archivo
+
+    }
+    $this->load->view('Fichas/importar_fichas',$data);
+  }
+
+	function importar_fichas2(){
         ini_set("memory_limit","300000000000M");
         //$this->init();
         $this->load->library('excel');

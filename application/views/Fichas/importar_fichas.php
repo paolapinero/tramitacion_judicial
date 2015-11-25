@@ -5,7 +5,7 @@
   		<div class="panel-body">
 		<div class="row">
 			<div class="col-md-10">
-				<?php echo form_open_multipart('Fichas/importar_fichas');?>
+				<?php echo form_open_multipart('Fichas/importar_fichas2');?>
 				<div class="row">
 					<div class="col-md-6">
 					<label>Seleccione un demandante</label>

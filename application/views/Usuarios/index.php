@@ -28,8 +28,7 @@
 		 <div class="form-group">
 		    <label for="rango-usuario">Rango</label>
 		    <?php 
-				$options = array('1' => 'Administrador','2'=>'Finanzas','3'=>'Facturas','4'=>'Recibos','5' => 'Normal');
-				echo form_dropdown('rango_id', $options, '' ,array('class' => 'form-control','required' => 'true'));
+				echo form_dropdown('rango_id', $rangos, '' ,array('class' => 'form-control','required' => 'true'));
 			 ?> 
 		</div>
        
@@ -66,8 +65,7 @@
   					<td><?php echo $u['id'] ?> </td>
   					<td><?php echo $u['rut'] ?> </td>
   					<td><?php 
-  						$options = array('1' => 'Administrador','2'=>'Finanzas','3'=>'Facturas','4'=>'Recibos','5' => 'Normal');
-  						echo form_dropdown('rango_id', $options, $u['rango_id'] ,array('class' => 'form-control'));
+  						echo form_dropdown('rango_id', $rangos, $u['rango_id'] ,array('class' => 'form-control'));
   					 ?> </td>
   					 <td>
   					 	<?php echo form_password('password','',array('placeholder' => '*******', 'class' => 'form-control')); ?>

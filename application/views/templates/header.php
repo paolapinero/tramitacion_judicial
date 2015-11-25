@@ -5,8 +5,12 @@
 		<?php echo 'Tramitación Judicial' ?>:
 	</title>
     <link rel="stylesheet" href="<?php echo base_url("/assets/bootstrap/css/bootstrap.css"); ?>" />
+    <link rel="stylesheet" href="<?php echo base_url("/css/datepicker.css"); ?>" />
+    <link rel="stylesheet" href="<?php echo base_url("/css/jqueryDatatable.css"); ?>" />
     <script type="text/javascript" src='<?php echo base_url('js/jquery.min.js');?>'></script>
     <script type="text/javascript" src='<?php echo base_url('/assets/bootstrap/js/bootstrap.js');?>'></script>
+    <script type="text/javascript" src='<?php echo base_url('js/bootstrap-datepicker.js');?>'></script>
+    <script type="text/javascript" src='<?php echo base_url('js/jqueryDatatable.js');?>'></script>
 </head>
 <body style="padding-top: 70px;padding-bottom: 30px;">
 	<div id="">
